@@ -1,3 +1,6 @@
+;; 1.1.7
+; Find square roots by Newton's method of successive approximations
+
 (define (sqrt-iter guess x)
   (if (good-enough? guess x)
     guess
