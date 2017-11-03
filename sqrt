@@ -1,0 +1,44 @@
+(define (sqrt-iter guess x)
+  (if (good-enough? guess x)
+    guess
+    (sqrt-iter (improve guess x)
+               x)))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+
+(define (abs x)
+  (if (< x 0)
+      (- x)
+      x))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 x))
+
+(sqrt 9)
+3.00009155413138
+
+user> (defn average [x y])
+#'user/average
+user> (defn average [x y] (/ (+ x y) 2) )
+#'user/average
+user> (defn improve [guess x] (average guess (/ x guess)))
+#'user/improve
+user> (defn abs [x] (if (< x 0) (- x) x))
+#'user/abs
+user> (defn square [x] (* x x))
+#'user/square
+user> (defn good-enough? [guess x] (< (abs (- (square guess) x)) 0.001))
+#'user/good-enough?
+user> (defn sqrt-iter [guess x] (if (good-enough? guess x) guess (sqrt-iter (improve guess x) x)))
+#'user/sqrt-iter
+user> (defn sqrt [x] (sqrt-iter 1.0 x))
+#'user/sqrt
+user> (sqrt 9)
+3.00009155413138
